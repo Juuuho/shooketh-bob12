@@ -97,7 +97,7 @@ export default function Chat() {
               className="h-20 w-20"
             />
             <h1 className="text-lg font-semibold text-black">
-              Hi, I'm Shooketh!
+              Hi BoB 12th, I'm Shooketh!
             </h1>
             <p className="text-gray-500">
               I'm an AI bot built with the{" "}
@@ -119,16 +119,6 @@ export default function Chat() {
                 fine-tuned
               </a>{" "}
               on Shakespeare's literary works.
-              <br />
-              <a
-                href="https://vercel.com/guides/fine-tuning-openai-nextjs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium underline underline-offset-4 transition-colors hover:text-black"
-              >
-                Read the guide
-              </a>{" "}
-              on how you can build your own bot like me.
             </p>
           </div>
           <div className="flex flex-col space-y-4 border-t border-gray-200 bg-gray-50 p-7 sm:p-10">
