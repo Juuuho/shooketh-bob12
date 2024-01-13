@@ -36,9 +36,6 @@ export default function Chat() {
 
   return (
     <main className="flex flex-col items-center justify-between pb-40">
-      <div className="absolute top-5 hidden w-full justify-between px-5 sm:flex">
-        
-      </div>
       {messages.length > 0 ? (
         messages.map((message, i) => (
           <div
