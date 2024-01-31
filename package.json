@@ -11,6 +11,7 @@
   "dependencies": {
     "ai": "2.2.10",
     "clsx": "^2.0.0",
+    "discord-webhook-node": "^1.1.8",
     "dotenv": "^16.3.1",
     "fs": "0.0.1-security",
     "next": "13.4.12",
