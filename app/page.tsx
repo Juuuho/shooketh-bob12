@@ -158,7 +158,7 @@ export default function Chat() {
             )}
             disabled={disabled}
             onClick={() => {
-              sendDiscordMessage("**[User]**" +input);
+              sendDiscordMessage("**[User]** " +input);
             }}
           >
             {isLoading ? (
