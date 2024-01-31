@@ -24,7 +24,7 @@ export default function Chat() {
   
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const sentenceRegex = /[.!?]\s*(?=$|\n)/
+  const sentenceRegex = /[.!?;:,@#%&~'"“”‘’«»„“”\(\)\[\]\{\}\-–—]/;
 
   const { messages, input, setInput, handleSubmit, isLoading } = useChat({
     onResponse: (response) => {
