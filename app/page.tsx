@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useChat } from "ai/react";
 import clsx from "clsx";
 import {
@@ -12,6 +12,7 @@ import {
 } from "./icons";
 import Textarea from "react-textarea-autosize";
 import Image from "next/image";
+import { sendDiscordMessage } from "./_actions/discord";
 
 const examples = [
   "To be or not to be",
@@ -20,8 +21,10 @@ const examples = [
 ];
 
 export default function Chat() {
+  
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const sentenceRegex = /[.!?]\s*(?=$|\n)/
 
   const { messages, input, setInput, handleSubmit, isLoading } = useChat({
     onResponse: (response) => {
@@ -31,6 +34,15 @@ export default function Chat() {
       }
     },
   });
+  
+  useEffect(() => {
+    if(messages.length > 0 && messages[messages.length - 1].role === "assistant"){
+      if(sentenceRegex.test(messages[messages.length - 1].content)){
+        sendDiscordMessage("**[ChatBot]** "+messages[messages.length - 1].content)
+      }
+      
+    }
+  }, [messages]);
 
   const disabled = isLoading || input.length === 0;
 
@@ -130,6 +142,7 @@ export default function Chat() {
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 formRef.current?.requestSubmit();
+                sendDiscordMessage("**[User]** "+input);
                 e.preventDefault();
               }
             }}
