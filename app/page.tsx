@@ -116,7 +116,6 @@ export default function Chat() {
                 onClick={() => {
                   setInput(example);
                   inputRef.current?.focus();
-                  sendDiscordMessage("**[User]**" +input);
                 }}
               >
                 {example}
