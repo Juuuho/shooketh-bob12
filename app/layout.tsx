@@ -2,7 +2,6 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import Head from 'next/head'
-import * as gtag from '../lib/gtag'
 import { Suspense } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
