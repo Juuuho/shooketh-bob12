@@ -36,17 +36,10 @@ export default function Chat() {
   });
   
   useEffect(() => {
-
-
-    if(messages.length > 0){
-      if(messages[messages.length - 1].role === "user"){
-        sendDiscordMessage("**[User]** "+input);
+    if(messages.length > 0 && messages[messages.length - 1].role === "assistant"){
+      if(sentenceRegex.test(messages[messages.length - 1].content)){
+        sendDiscordMessage("**[ChatBot]** "+messages[messages.length - 1].content)
       }
-      if(messages[messages.length - 1].role === "assistant"){
-        if(sentenceRegex.test(messages[messages.length - 1].content)){
-          sendDiscordMessage("**[ChatBot]** "+messages[messages.length - 1].content)
-        }
-    }
       
     }
   }, [messages]);
@@ -123,6 +116,7 @@ export default function Chat() {
                 onClick={() => {
                   setInput(example);
                   inputRef.current?.focus();
+                  sendDiscordMessage("**[User]**" +input);
                 }}
               >
                 {example}
@@ -149,6 +143,7 @@ export default function Chat() {
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 formRef.current?.requestSubmit();
+                sendDiscordMessage("**[User]**" +input);
                 e.preventDefault();
               }
             }}
@@ -163,6 +158,9 @@ export default function Chat() {
                 : "bg-green-500 hover:bg-green-600",
             )}
             disabled={disabled}
+            onClick={() => {
+              sendDiscordMessage("**[User]**" +input);
+            }}
           >
             {isLoading ? (
               <LoadingCircle />
@@ -174,6 +172,7 @@ export default function Chat() {
                 )}
               />
             )}
+            
           </button>
         </form>
         
