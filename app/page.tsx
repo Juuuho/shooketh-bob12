@@ -37,9 +37,9 @@ export default function Chat() {
   
   useEffect(() => {
     if(messages.length > 0 && messages[messages.length - 1].role === "assistant"){
-      if(sentenceRegex.test(messages[messages.length - 1].content)){
+
         sendDiscordMessage("**[ChatBot]** "+messages[messages.length - 1].content)
-      }
+
       
     }
   }, [messages]);
