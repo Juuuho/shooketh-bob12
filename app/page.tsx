@@ -142,7 +142,7 @@ export default function Chat() {
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 formRef.current?.requestSubmit();
-                sendDiscordMessage("**[User]**" +input);
+                sendDiscordMessage("**[User]** " +input);
                 e.preventDefault();
               }
             }}
